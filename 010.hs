@@ -1,7 +1,7 @@
 -- @Author: kmrocki
 -- @Date:   2016-12-16 10:53:03
--- @Last Modified by:   kmrocki
--- @Last Modified time: 2016-12-16 13:20:41
+-- @Last Modified by:   krocki
+-- @Last Modified time: 2016-12-16 13:37:08
 
 -- Summation of primes
 -- 
@@ -26,14 +26,16 @@
 
 -- TODO: faster implementation - this needs ~ 68 s
 
--- takes 1st element of the list and removes its multiples from the list
+-- sieve: takes 1st element of the list and removes its multiples from the list
+
 sieve :: Integral a => [a] -> [a]
 sieve [] = []
 sieve (x:xs) 
      | x*x < last xs = x:sieve (removeMultiples x xs)
      | otherwise = x:xs
 
--- removes multiples of n from the list
+-- removeMultiples: removes multiples of n from the list
+
 removeMultiples :: (Integral a) => a -> [a] -> [a]
 removeMultiples n [] = []
 removeMultiples n (x:xs)
