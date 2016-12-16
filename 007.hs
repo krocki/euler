@@ -1,7 +1,7 @@
 -- @Author: kmrocki
 -- @Date:   2016-12-14 19:24:41
 -- @Last Modified by:   kmrocki
--- @Last Modified time: 2016-12-14 20:39:56
+-- @Last Modified time: 2016-12-16 10:58:14
 
 -- 10001st prime  
 --
@@ -10,7 +10,7 @@
 
 -- What is the 10001st prime number?
 
--- TODO: find a more elegant (and faster; this one take ~40s) solution
+-- TODO: find a more elegant (and faster; this one takes ~40s) solution
 
 isPrime :: Integer -> [Integer] -> Bool
 isPrime x previousPrimes = and [x `mod` y /=  0 |  y <- previousPrimes]
