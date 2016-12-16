@@ -1,7 +1,7 @@
 -- @Author: kmrocki
 -- @Date:   2016-12-14 15:05:55
--- @Last Modified by:   kmrocki
--- @Last Modified time: 2016-12-14 19:07:42
+-- @Last Modified by:   krocki
+-- @Last Modified time: 2016-12-16 13:39:55
 
 -- Even Fibonacci numbers 
 -- 

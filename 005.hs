@@ -1,7 +1,7 @@
 -- @Author: kmrocki
 -- @Date:   2016-12-15 15:01:51
--- @Last Modified by:   kmrocki
--- @Last Modified time: 2016-12-15 15:34:09
+-- @Last Modified by:   krocki
+-- @Last Modified time: 2016-12-16 13:39:34
 
 -- Smallest multiple
 -- Problem 5

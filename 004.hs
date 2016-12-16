@@ -1,7 +1,7 @@
 -- @Author: kmrocki
 -- @Date:   2016-12-15 14:42:03
--- @Last Modified by:   kmrocki
--- @Last Modified time: 2016-12-15 14:54:31
+-- @Last Modified by:   krocki
+-- @Last Modified time: 2016-12-16 13:39:31
 
 -- Largest palindrome product 
 -- 

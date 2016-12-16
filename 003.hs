@@ -1,7 +1,7 @@
 -- @Author: kmrocki
 -- @Date:   2016-12-15 12:47:00
--- @Last Modified by:   kmrocki
--- @Last Modified time: 2016-12-15 14:39:44
+-- @Last Modified by:   krocki
+-- @Last Modified time: 2016-12-16 13:39:29
 
 -- Largest prime factor
 --

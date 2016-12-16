@@ -1,7 +1,7 @@
 -- @Author: kmrocki
 -- @Date:   2016-12-15 20:08:13
--- @Last Modified by:   kmrocki
--- @Last Modified time: 2016-12-15 20:53:56
+-- @Last Modified by:   krocki
+-- @Last Modified time: 2016-12-16 13:39:17
 
 -- Largest product in a series
 --

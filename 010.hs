@@ -1,7 +1,7 @@
 -- @Author: kmrocki
 -- @Date:   2016-12-16 10:53:03
 -- @Last Modified by:   krocki
--- @Last Modified time: 2016-12-16 13:37:08
+-- @Last Modified time: 2016-12-16 13:39:50
 
 -- Summation of primes
 -- 
