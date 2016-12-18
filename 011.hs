@@ -1,7 +1,7 @@
 -- @Author: krocki
 -- @Date:   2016-12-17 09:19:42
 -- @Last Modified by:   krocki
--- @Last Modified time: 2016-12-17 16:08:58
+-- @Last Modified time: 2016-12-17 16:42:04
 
 -- Largest product in a grid
 -- 
@@ -41,12 +41,12 @@ parseInput = map (map read . words) . lines
 -- subsequences starting from point (x, y)
 -- doesn't look pretty, but does the job here
 subsequences_block :: (Int, Int) -> [[Int]] -> [[Int]]
-subsequences_block (x, y) array  = [[array !! x !!  y   ] ++ [array !! (x+1) !!  y]    ++ [array !! (x+2) !!  y   ] ++ [array !! (x+3) !! y    ]] ++ 
-                                   [[array !! x !!  y   ] ++ [array !!  x    !! (y+1)] ++ [array !!  x    !! (y+2)] ++ [array !!  x    !! (y+3)]] ++
-                                   [[array !! x !!  y   ] ++ [array !! (x+1) !! (y+1)] ++ [array !! (x+2) !! (y+2)] ++ [array !! (x+3) !! (y+3)]] ++
-                                   [[array !! x !! (y+3)] ++ [array !! (x+1) !! (y+2)] ++ [array !! (x+2) !! (y+1)] ++ [array !! (x+3) !! y    ]]
-
-
+subsequences_block (x, y) array  = vertical ++ horizontal ++ rightdown ++ leftdown
+                                 where
+                                    vertical   = if (x < 17          ) then [[array !! x !!  y   ] ++ [array !! (x+1) !!  y   ] ++ [array !! (x+2) !!  y   ] ++ [array !! (x+3) !! y    ]] else [] 
+                                    horizontal = if (          y < 17) then [[array !! x !!  y   ] ++ [array !!  x    !! (y+1)] ++ [array !!  x    !! (y+2)] ++ [array !!  x    !! (y+3)]] else []
+                                    rightdown  = if (x < 17 && y < 17) then [[array !! x !!  y   ] ++ [array !! (x+1) !! (y+1)] ++ [array !! (x+2) !! (y+2)] ++ [array !! (x+3) !! (y+3)]] else []
+                                    leftdown   = if (x < 17 && y < 17) then [[array !! x !! (y+3)] ++ [array !! (x+1) !! (y+2)] ++ [array !! (x+2) !! (y+1)] ++ [array !! (x+3) !! y    ]] else []
 main = do
 
     -- read in the file
@@ -55,14 +55,12 @@ main = do
     
     -- parse to Ints
     let elements = parseInput content
-    
+
     -- now, we can access elements like an array - elements !! 1 !! 12
     -- gives row 1, col 12
-    -- let makePoints = [(x,y) | x <- [1..16], y <- [1..16]]
-    -- print elements
 
     -- get all subsequences of 4 for every subblock [x,y] -- [x+3, y+3]
-    let all_sequences_of_four = [subsequences_block (x, y) elements | x <- [0..16], y <- [0..16] ]
+    let all_sequences_of_four = [subsequences_block (x, y) elements | x <- [0..19], y <- [0..19] ]
     
     -- get maximum of the products
     let solution = maximum . map product $ concat all_sequences_of_four
