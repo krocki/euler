@@ -1,7 +1,7 @@
 -- @Author: krocki
 -- @Date:   2016-12-24 18:13:21
 -- @Last Modified by:   krocki
--- @Last Modified time: 2016-12-24 19:42:37
+-- @Last Modified time: 2016-12-24 19:43:30
 
 -- Power digit sum
 -- 
@@ -37,6 +37,7 @@ powers' x limit
     | otherwise = [x]
 
 -- last (powers' [1] 1000) is 2^1000
+
 main = do
     let solution = powers' [1] 1000
     print (sum (last solution))
