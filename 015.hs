@@ -1,7 +1,7 @@
 -- @Author: krocki
 -- @Date:   2016-12-24 17:30:35
 -- @Last Modified by:   krocki
--- @Last Modified time: 2016-12-24 18:10:30
+-- @Last Modified time: 2016-12-24 18:12:34
 
 -- Lattice paths 
 -- 
@@ -24,7 +24,3 @@ main = do
     let solution = n_choose_k 40 20
     
     print solution
-
-
-
-
