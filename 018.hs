@@ -1,7 +1,7 @@
 -- @Author: krocki
 -- @Date:   2016-12-25 14:38:18
 -- @Last Modified by:   krocki
--- @Last Modified time: 2016-12-25 21:58:52
+-- @Last Modified time: 2016-12-25 22:01:02
 -- 
 -- Maximum path sum I
 -- 
@@ -41,6 +41,7 @@
 -- pos -> which column of the triangle is now
 -- value of a node = its value (x !! pos) + max (children)
 
+maxPath :: [[Int]] -> Int -> Int
 maxPath [] _ = 0
 maxPath (x:xs) pos = x !! pos + max left right
                 where left = maxPath xs (pos)
