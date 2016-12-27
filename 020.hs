@@ -1,7 +1,7 @@
 -- @Author: krocki
 -- @Date:   2016-12-25 15:03:58
 -- @Last Modified by:   krocki
--- @Last Modified time: 2016-12-26 20:53:13
+-- @Last Modified time: 2016-12-26 20:56:11
 
 -- Factorial digit sum
 -- 
@@ -47,7 +47,7 @@ mult n xs = add xs (mult (n-1) xs)
 
 -- factorial
 fact :: Int -> [Int]
-fact 2 = [2]
+fact 1 = [1]
 fact n = mult n (fact (n-1))
 
 main = do
