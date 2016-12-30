@@ -1,7 +1,7 @@
 -- @Author: krocki
 -- @Date:   2016-12-29 16:23:49
 -- @Last Modified by:   krocki
--- @Last Modified time: 2016-12-30 13:25:29
+-- @Last Modified time: 2016-12-30 13:33:10
 
 -- Coin sums
 -- 
@@ -27,10 +27,10 @@
 changeways :: (Ord t, Num t) => t -> [t] -> [[t]]
 changeways 0 _  = [[]]
 changeways n [] = []
-changeways n coins@(c:rest)
-        | c <= n = map (c:) (changeways (n-c) coins) ++ changeways n rest
-        | otherwise = changeways n rest
-
+changeways n coins@(c:cs) 
+            | c <= n = map (c:) (changeways (n-c) coins) 
+                       ++ changeways n cs
+            | otherwise = changeways n cs
 main = do 
     let solution = length (changeways 200 [200,100,50,20,10,5,2,1])
     print solution
