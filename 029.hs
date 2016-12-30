@@ -1,7 +1,7 @@
 -- @Author: krocki
 -- @Date:   2016-12-29 16:22:22
 -- @Last Modified by:   krocki
--- @Last Modified time: 2016-12-29 20:28:44
+-- @Last Modified time: 2016-12-29 20:30:38
 
 -- Distinct powers
 -- 
@@ -25,6 +25,7 @@
 -- [1, (3,5,7,9), (13,17,21,25), ...] until interval is less than 1001
 
 -- take 4 elements separated by interval
+-- make an 'arm' of the 'spriral'
 take4elems :: (Num a, Enum a) => a -> a -> [a]
 take4elems x interval = take 4 [x+interval, x+2*interval..]
 
