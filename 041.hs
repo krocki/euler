@@ -1,7 +1,7 @@
 -- @Author: krocki
 -- @Date:   2017-01-04 18:27:04
 -- @Last Modified by:   krocki
--- @Last Modified time: 2017-01-05 09:31:59
+-- @Last Modified time: 2017-01-05 09:33:06
 import Data.List
 
 digits = ["1","2","3","4","5","6","7","8","9"]
@@ -40,5 +40,5 @@ lastdigit x = (x `mod` 10)
 main = do
     let pan = pandigital
         pans = reverse . sort $ (filter (\x -> odd x && (sumd x `mod` 3 /= 0) && (lastdigit x /= 5)) $ reverse pan)
-        solution = take 1 (filter (\x -> isPrime x == True) pans)
+        solution = head . (take 1) $ (filter (\x -> isPrime x == True) pans)
     print solution
