@@ -1,7 +1,7 @@
 -- @Author: krocki
 -- @Date:   2016-12-28 12:07:38
 -- @Last Modified by:   krocki
--- @Last Modified time: 2016-12-28 20:05:20
+-- @Last Modified time: 2017-01-04 18:24:02
 
 -- Reciprocal cycles
 -- 
@@ -40,6 +40,8 @@
 --     where  whole = div num denominator
 --            rest = (10 * (num - whole * denominator))
 
+import Data.List (elemIndex, foldl1')
+
 divide :: Integral a => a -> a -> [(a, a)] -> [(a, a)]
 divide num denominator acc
     | (num,denominator) `elem` acc = acc ++ [(num,denominator)]
@@ -54,13 +56,13 @@ divide num denominator acc
 -- and returning its index, then the distance between these
 -- two is the cycle length
 
-cycleLength :: Eq a => [a] -> Int
-cycleLength a =  l - length (takeWhile (/= a !! (l - 1)) a) - 1
-                 where l = length a
+cycleLength x = l - length (takeWhile (/= a !! (l - 1)) a) - 1
+                 where a = divide 1 x []
+                       l = length a
 
-argmax :: [Int] -> Int
-argmax xs = foldl1 (\x y -> if (xs !! x) > (xs !! y) then x else y) xs
+argmax :: Ord b => (a -> b) -> [a] -> a
+argmax f = foldl1' (\x y -> if (f y) > (f x) then y else x)
 
 main = do
-    let solution = argmax [cycleLength (divide 1 x []) | x <- [1..1000]] + 1
+    let solution = argmax cycleLength [1..1000]
     print solution
