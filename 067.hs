@@ -1,7 +1,7 @@
 -- @Author: krocki
 -- @Date:   2017-01-05 20:05:04
 -- @Last Modified by:   krocki
--- @Last Modified time: 2017-01-06 10:30:31
+-- @Last Modified time: 2017-01-06 11:17:15
 
 {-
 
@@ -29,20 +29,6 @@ billion years to check them all. There is an efficient algorithm to solve it.
 ;o)
 
 -}
-
--- fib n = (xs!!(n-1)) + (xs!!(n-2)) where xs = 0:1:map fib [2..]
-
-
--- maxPath :: [[Int]] -> Int -> Int
--- maxPath [] _ = 0
--- maxPath (x:xs) pos = x !! pos + m !! pos
---                 where 
---                       left = maxPath xs (pos)
---                       right = maxPath xs (pos+1)
---                       m = max left right
-
-
-
 triangle = [
     [59],
     [73,41],
@@ -145,15 +131,38 @@ triangle = [
     [30,11,85,31,34,71,13,48,05,14,44,03,19,67,23,73,19,57,06,90,94,72,57,69,81,62,59,68,88,57,55,69,49,13,07,87,97,80,89,05,71,05,05,26,38,40,16,62,45,99,18,38,98,24,21,26,62,74,69,04,85,57,77,35,58,67,91,79,79,57,86,28,66,34,72,51,76,78,36,95,63,90, 8,78,47,63,45,31,22,70,52,48,79,94,15,77,61,67,68],
     [23,33,44,81,80,92,93,75,94,88,23,61,39,76,22,03,28,94,32,06,49,65,41,34,18,23, 8,47,62,60,03,63,33,13,80,52,31,54,73,43,70,26,16,69,57,87,83,31,03,93,70,81,47,95,77,44,29,68,39,51,56,59,63,07,25,70,07,77,43,53,64,03,94,42,95,39,18,01,66,21,16,97,20,50,90,16,70,10,95,69,29,06,25,61,41,26,15,59,63,35]]
 
-memo :: [[Int]]
-memo = [[maxpath i j | j <- [0..]] | i <- [0..]]
+-- METHOD I : memoization
 
-maxpath :: Int -> Int -> Int
-maxpath i j = (triangle !! i !! j) +
-                      (if i + 1 < length triangle
-                        then max (memo !! (i+1) !! j) (memo !! (i+1) !! (j+1))
-                        else 0)
+-- memo :: [[Int]]
+-- memo = [[maxpath i j | j <- [0..]] | i <- [0..]]
+
+-- maxpath :: Int -> Int -> Int
+-- maxpath i j = (triangle !! i !! j) +
+--                       (if i + 1 < length triangle
+--                         then max (memo !! (i+1) !! j) (memo !! (i+1) !! (j+1))
+--                         else 0)
+-- main = do
+
+--     let solution = maxpath 0 0
+--     print solution
+
+-- METHOD II - DP
+
+maxPath :: (Ord c, Num c) => [[c]] -> [c]
+
+-- one row - just return
+
+maxPath [x] = x
+
+-- take current row x, add 2 possible routes
+-- to y (max so far) and process y:rest recursively
+maxPath (x:y:rest) = maxPath ((zipWith (+) maxsofar y):rest)
+                where maxsofar = zipWith max ([head x] ++ x) (x ++ [last x])
+
 main = do
 
-    let solution = maxpath 0 0
+    let maxpaths = maxPath triangle
+        -- the solution is the max element of the remaining list
+        solution = maximum maxpaths
+    
     print solution
