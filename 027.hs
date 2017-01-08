@@ -1,7 +1,7 @@
 -- @Author: krocki
 -- @Date:   2016-12-30 13:34:45
 -- @Last Modified by:   krocki
--- @Last Modified time: 2017-01-07 21:46:48
+-- @Last Modified time: 2017-01-07 21:49:13
 
 -- Quadratic primes 
 -- Problem 27 
@@ -55,5 +55,6 @@ countprimes primes = [(a,b,k) | a <- [-999..1000], b <- sieve [2..1000], let k =
 main = do
     -- recompute primes as needed in countprimes', initially up to 10000
     let primes = sieve [2..10000]
-        solution = foldl1 (\(a',b',n') (a,b,n) -> if n > n' then (a,b,n) else (a',b',n')) (countprimes primes)
-    print solution
+        coeffs = foldl1 (\(a',b',n') (a,b,n) -> if n > n' then (a,b,n) else (a',b',n')) (countprimes primes)
+        solution (a,b,n) = a * b
+    print (solution coeffs)
